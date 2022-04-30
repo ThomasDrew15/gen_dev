@@ -1,10 +1,9 @@
-import hello_world
-import electricity_meter
+import agile_prices
 
 
 def main():
     # hello_world
-    electricity_meter.find_prices
+    agile_prices.get_config_section
 
 
 if __name__ == "__main__":
