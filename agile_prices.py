@@ -3,7 +3,7 @@ import pprint
 import json
 
 
-APIKEY = "sk_live_JuULy2Hj2JHhzouB5CVyUIFt"
+APIKEY =
 url = "https://api.octopus.energy/v1/products/AGILE-18-02-21/electricity-tariffs/E-1R-AGILE-18-02-21-L/standard-unit-rates/"
 r = requests.get(url, auth=(APIKEY, ""))
 json_string = json.dumps(r.json(), indent=3)
