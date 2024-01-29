@@ -1,7 +1,7 @@
 import requests
 
 # Define your API key
-api_key = '3af3a486-a9ad-4f33-9714-3cece9681aba'
+api_key = ''
 
 # Latitude and longitude of the location you're interested in
 latitude = '50.7179'  # Example latitude (London)
