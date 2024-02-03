@@ -1,7 +1,7 @@
 import requests
 
-def get_weather_data(latitude, longitude, api_key):
-    base_url = "https://api.openweathermap.org/data/2.5/onecall"
+def get_current_weather(latitude, longitude, api_key):
+    base_url = "https://api.openweathermap.org/data/2.5/weather"
     params = {
         "lat": latitude,
         "lon": longitude,
@@ -17,19 +17,19 @@ def get_weather_data(latitude, longitude, api_key):
         return None
 
 def main():
-    # Example coordinates (latitude and longitude)
-    latitude = 37.7749
-    longitude = -122.4194
+    # User input for latitude and longitude
+    latitude = float(input("Enter latitude: "))
+    longitude = float(input("Enter longitude: "))
     
     # Your OpenWeatherMap API key
     api_key = ""
     
-    weather_data = get_weather_data(latitude, longitude, api_key)
-    if weather_data:
-        # Do something with the weather data
-        print(weather_data)
+    current_weather = get_current_weather(latitude, longitude, api_key)
+    if current_weather:
+        # Do something with the current weather data
+        print(current_weather)
     else:
-        print("Failed to retrieve weather data.")
+        print("Failed to retrieve current weather data.")
 
 if __name__ == "__main__":
     main()
