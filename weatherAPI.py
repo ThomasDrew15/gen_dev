@@ -1,34 +1,35 @@
 import requests
 
-# Define your API key
-api_key = ''
+def get_weather_data(latitude, longitude, api_key):
+    base_url = "https://api.openweathermap.org/data/2.5/onecall"
+    params = {
+        "lat": latitude,
+        "lon": longitude,
+        "appid": api_key,
+        "units": "metric"  # You can change the units as needed
+    }
 
-# Latitude and longitude of the location you're interested in
-latitude = '50.7179'  # Example latitude (London)
-longitude = '-3.5327'  # Example longitude (London)
+    response = requests.get(base_url, params=params)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print("Error:", response.status_code)
+        return None
 
-#print(f"this is the api key:{api_key}")
-#print(f"this is the lat:{latitude}")
-#print(f"this is the long:{longitude}")
-
-# Construct the API request URL with latitude, longitude, and format specified as XML
-#url = f'http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/xml?res=daily&key={api_key}&lat={latitude}&lon={longitude}'
-
-# Construct the API request URL with format specified as XML
-url = f'http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/xml/sitelist?&key={api_key}&output=xml'
-
-# Make the API request
-response = requests.get(url)
-
-# Check if the request was successful
-if response.status_code == 200:
-    # Extract the XML response
-    xml_data = response.text
+def main():
+    # Example coordinates (latitude and longitude)
+    latitude = 37.7749
+    longitude = -122.4194
     
-    # Output the XML response to a file
-    with open('sitelist.xml', 'w') as f:
-        f.write(xml_data)
+    # Your OpenWeatherMap API key
+    api_key = ""
+    
+    weather_data = get_weather_data(latitude, longitude, api_key)
+    if weather_data:
+        # Do something with the weather data
+        print(weather_data)
+    else:
+        print("Failed to retrieve weather data.")
 
-    print("Data written to sitelist.xml successfully.")
-else:
-    print("Error:", response.status_code)
+if __name__ == "__main__":
+    main()
